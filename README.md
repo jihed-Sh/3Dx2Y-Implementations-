@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="http://googleusercontent.com/image_collection/image_retrieval/18242203470872407675" alt="Greek Statue - The Foundation" width="400"/>
+  <img src="assets/1.jpg" alt="Greek Statue - The Foundation" width="400"/>
   <h1>3Dx2Y: The Foundation</h1>
 </div>
 
