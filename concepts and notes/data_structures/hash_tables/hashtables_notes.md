@@ -22,3 +22,19 @@ Hashing is the "bridge" between infinite keys and a finite array.
 
 ### 4. What is a "Bucket"?
 In the simple "26-letter" example, a bucket holds exactly one value. In a professional Hash Table, a **Bucket** is a storage unit at a specific index that must be prepared to hold **multiple items** (via a Linked List or other methods) because eventually, two different keys will "hash" to the same bucket.
+## Advanced Hash Table Mechanics
+
+### Linear Probing (Open Addressing)
+Instead of Linked Lists, we store everything in the main array.
+* **Find:** If `hash(key)` is taken by a different key, move to `index + 1` until found or an empty slot appears.
+* **The Tombstone Rule:** When deleting in Linear Probing, we cannot leave a `null`. We must place a "Tombstone" marker so that existing probe chains aren't broken.
+
+### Resizing & Load Factor
+* **Load Factor ($\alpha$):** $n / m$ (items / buckets).
+* **The Threshold:** At $\alpha \approx 0.7$, performance drops because "clusters" of data form, leading to long probe sequences.
+* **Re-hashing:** Resizing is an $O(N)$ operation where every key is re-run through the hash function against the new capacity.
+
+### Distributed Hash Tables (DHT)
+Used in massive systems (Dropbox, BitTorrent).
+* Keys are distributed across multiple physical machines.
+* Uses **Consistent Hashing** so that when a server goes down, only $1/N$ of the keys need to be relocated, preventing a system-wide "re-hash storm."
